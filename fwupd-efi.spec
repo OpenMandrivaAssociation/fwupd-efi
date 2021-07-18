@@ -1,6 +1,8 @@
 #global debug_package %{nil}
 %define _empty_manifest_terminate_build 0
 
+%define devname	%mklibname %{name} -d
+
 Group:     System/Kernel and hardware
 Summary:   Firmware update EFI binaries
 Name:      fwupd-efi
@@ -20,17 +22,23 @@ BuildRequires: pkgconfig(nss)
 fwupd is a project to allow updating device firmware, and this package provides
 the EFI binary that is used for updating using UpdateCapsule.
 
+package -n %{devname}
+Summary:	Header files from %{name}
+Group:		Development/C
+Requires: %{name} = %{EVRD}
+Provides:	%{name}-devel = %{version}-%{release}
+
 %prep
 %autosetup -p1
 
 %build
 
 %meson \
-    -Defi_sbat_distro_id="fedora" \
-    -Defi_sbat_distro_summary="The Fedora Project" \
+    -Defi_sbat_distro_id="OpenMandriva" \
+    -Defi_sbat_distro_summary="OpenMandriva Lx" \
     -Defi_sbat_distro_pkgname="%{name}" \
     -Defi_sbat_distro_version="%{version}-%{release}" \
-    -Defi_sbat_distro_url="https://src.fedoraproject.org/rpms/%{name}"
+    -Defi_sbat_distro_url="https://github.com/OpenMandrivaAssociation/%{name}"
 
 %meson_build
 
@@ -56,3 +64,6 @@ rm -vf %{fwup_efi_fn}.tmp
 %license COPYING
 %{_libexecdir}/fwupd/efi/*.efi
 %{_libexecdir}/fwupd/efi/*.efi.signed
+
+%files -n %{devname}
+%{_libdir}/pkgconfig/fwupd-efi.pc
