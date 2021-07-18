@@ -14,6 +14,7 @@ Source0:   http://people.freedesktop.org/~hughsient/releases/%{name}-%{version}.
 BuildRequires: meson
 BuildRequires: gnu-efi
 BuildRequires: pesign
+BuildRequires: pkgconfig(nss)
 
 %description
 fwupd is a project to allow updating device firmware, and this package provides
