@@ -65,7 +65,7 @@ rm -vf %{fwup_efi_fn}.tmp
 %files
 %doc README.md AUTHORS
 %license COPYING
-%{_libexecdir}/fwupd/efi/*.efi
+#{_libexecdir}/fwupd/efi/*.efi
 %{_libexecdir}/fwupd/efi/*.efi.signed
 
 %files -n %{devname}
