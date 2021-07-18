@@ -50,7 +50,7 @@ Libraries and includes files for developing programs based on %{name}.
 
 
 # sign fwupd.efi loader
-%ifarch x86_64
+%ifarch x86_64 znver1
 %global efiarch x64
 %endif
 %ifarch aarch64
