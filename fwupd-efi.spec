@@ -1,20 +1,18 @@
-%global debug_package %{nil}
+#global debug_package %{nil}
+%define _empty_manifest_terminate_build 0
 
 Group:     System/Kernel and hardware
 Summary:   Firmware update EFI binaries
 Name:      fwupd-efi
 Version:   1.1
-Release:   %mkrel 1
+Release:   1
 License:   LGPLv2+
 URL:       https://github.com/fwupd/fwupd-efi
 Source0:   http://people.freedesktop.org/~hughsient/releases/%{name}-%{version}.tar.xz
 
-# these are the only architectures supporting UEFI UpdateCapsule
-ExclusiveArch: x86_64 
 
-BuildRequires: gcc
 BuildRequires: meson
-BuildRequires: gnu-efi-devel
+BuildRequires: gnu-efi
 BuildRequires: pesign
 
 %description
@@ -38,8 +36,6 @@ the EFI binary that is used for updating using UpdateCapsule.
 %install
 %meson_install
 
-# not required yet
-rm $RPM_BUILD_ROOT%{_libdir}/pkgconfig/fwupd-efi.pc
 
 # sign fwupd.efi loader
 %ifarch x86_64
