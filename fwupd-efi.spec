@@ -50,23 +50,23 @@ Libraries and includes files for developing programs based on %{name}.
 
 
 # sign fwupd.efi loader
-%ifarch x86_64 znver1
-%global efiarch x64
-%endif
-%ifarch aarch64
-%global efiarch aa64
-%endif
-%global fwup_efi_fn $RPM_BUILD_ROOT%{_libexecdir}/fwupd/efi/fwupd%{efiarch}.efi
-%pesign -s -i %{fwup_efi_fn} -o %{fwup_efi_fn}.tmp
-%define __pesign_client_cert fwupd-signer
-%pesign -s -i %{fwup_efi_fn}.tmp -o %{fwup_efi_fn}.signed
-rm -vf %{fwup_efi_fn}.tmp
+#%ifarch x86_64 znver1
+#%global efiarch x64
+#%endif
+#%ifarch aarch64
+#%global efiarch aa64
+#%endif
+#%global fwup_efi_fn $RPM_BUILD_ROOT%{_libexecdir}/fwupd/efi/fwupd%{efiarch}.efi
+#%pesign -s -i %{fwup_efi_fn} -o %{fwup_efi_fn}.tmp
+#%define __pesign_client_cert fwupd-signer
+#%pesign -s -i %{fwup_efi_fn}.tmp -o %{fwup_efi_fn}.signed
+#rm -vf %{fwup_efi_fn}.tmp
 
 %files
 %doc README.md AUTHORS
 %license COPYING
-#{_libexecdir}/fwupd/efi/*.efi
-%{_libexecdir}/fwupd/efi/*.efi.signed
+%{_libexecdir}/fwupd/efi/*.efi
+#{_libexecdir}/fwupd/efi/*.efi.signed
 
 %files -n %{devname}
 %{_libdir}/pkgconfig/fwupd-efi.pc
