@@ -22,11 +22,14 @@ BuildRequires: pkgconfig(nss)
 fwupd is a project to allow updating device firmware, and this package provides
 the EFI binary that is used for updating using UpdateCapsule.
 
-package -n %{devname}
+%package -n %{devname}
 Summary:	Header files from %{name}
 Group:		Development/C
 Requires: %{name} = %{EVRD}
 Provides:	%{name}-devel = %{version}-%{release}
+
+%description -n %{devname}
+Libraries and includes files for developing programs based on %{name}.
 
 %prep
 %autosetup -p1
