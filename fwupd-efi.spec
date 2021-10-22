@@ -6,10 +6,11 @@ Group:		System/Kernel and hardware
 Summary:	Firmware update EFI binaries
 Name:		fwupd-efi
 Version:	1.1
-Release:	2
+Release:	3
 License:	LGPLv2+
 URL:		https://github.com/fwupd/fwupd-efi
 Source0:	http://people.freedesktop.org/~hughsient/releases/%{name}-%{version}.tar.xz
+Patch0:		0001-meson-using-local-copy-ldscript-when-local-copy-crt0.patch
 # these are the only architectures supporting UEFI UpdateCapsule
 ExclusiveArch:	%{efi}
 BuildRequires:	meson
