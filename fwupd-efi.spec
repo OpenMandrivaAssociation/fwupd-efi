@@ -6,7 +6,7 @@ Group:		System/Kernel and hardware
 Summary:	Firmware update EFI binaries
 Name:		fwupd-efi
 Version:	1.1
-Release:	3
+Release:	4
 License:	LGPLv2+
 URL:		https://github.com/fwupd/fwupd-efi
 Source0:	http://people.freedesktop.org/~hughsient/releases/%{name}-%{version}.tar.xz
@@ -35,6 +35,9 @@ Libraries and includes files for developing programs based on %{name}.
 
 %build
 %meson \
+    -Defi-libdir="%{_libdir}" \
+    -Defi-ldsdir="%{_libdir}/gnuefi" \
+    -Defi-includedir="%{_includedir}/efi" \
     -Defi_sbat_distro_id="%{efi_vendor}" \
     -Defi_sbat_distro_summary="%{distribution}" \
     -Defi_sbat_distro_pkgname="%{name}" \
