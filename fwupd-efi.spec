@@ -16,6 +16,8 @@ ExclusiveArch:	%{efi}
 BuildRequires:	meson
 BuildRequires:	gnu-efi
 BuildRequires:	efi-srpm-macros
+BuildRequires:	gcc
+BuildRequires:	binutils
 
 %description
 fwupd is a project to allow updating device firmware, and this package provides
@@ -35,6 +37,8 @@ Libraries and includes files for developing programs based on %{name}.
 
 %build
 %meson \
+    -Defi-cc="gcc" \
+    -Defi-ld="ld.bfd" \
     -Defi-libdir="%{_libdir}" \
     -Defi-ldsdir="%{_libdir}/gnuefi" \
     -Defi-includedir="%{_includedir}/efi" \
