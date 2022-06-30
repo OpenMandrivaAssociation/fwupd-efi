@@ -5,7 +5,7 @@
 Group:		System/Kernel and hardware
 Summary:	Firmware update EFI binaries
 Name:		fwupd-efi
-Version:	1.2
+Version:	1.3
 Release:	1
 License:	LGPLv2+
 URL:		https://github.com/fwupd/fwupd-efi
