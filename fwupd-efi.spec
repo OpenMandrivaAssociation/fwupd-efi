@@ -5,8 +5,8 @@
 Group:		System/Kernel and hardware
 Summary:	Firmware update EFI binaries
 Name:		fwupd-efi
-Version:	1.3
-Release:	2
+Version:	1.4
+Release:	1
 License:	LGPLv2+
 URL:		https://github.com/fwupd/fwupd-efi
 Source0:	http://people.freedesktop.org/~hughsient/releases/%{name}-%{version}.tar.xz
@@ -18,6 +18,7 @@ BuildRequires:	gnu-efi
 BuildRequires:	efi-srpm-macros
 BuildRequires:	gcc
 BuildRequires:	binutils
+BuildRequires:  python3dist(pefile)
 
 %description
 fwupd is a project to allow updating device firmware, and this package provides
@@ -37,8 +38,6 @@ Libraries and includes files for developing programs based on %{name}.
 
 %build
 %meson \
-    -Defi-cc="gcc" \
-    -Defi-ld="ld.bfd" \
     -Defi-libdir="%{_libdir}" \
     -Defi-ldsdir="%{_libdir}/gnuefi" \
     -Defi-includedir="%{_includedir}/efi" \
