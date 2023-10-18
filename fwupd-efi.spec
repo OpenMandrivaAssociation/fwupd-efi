@@ -37,8 +37,6 @@ Libraries and includes files for developing programs based on %{name}.
 
 %build
 %meson \
-    -Defi-cc="gcc" \
-    -Defi-ld="ld.bfd" \
     -Defi-libdir="%{_libdir}" \
     -Defi-ldsdir="%{_libdir}/gnuefi" \
     -Defi-includedir="%{_includedir}/efi" \
