@@ -18,6 +18,7 @@ BuildRequires:	gnu-efi
 BuildRequires:	efi-srpm-macros
 BuildRequires:	gcc
 BuildRequires:	binutils
+BuildRequires:  python3dist(pefile)
 
 %description
 fwupd is a project to allow updating device firmware, and this package provides
