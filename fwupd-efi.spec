@@ -1,15 +1,15 @@
-%define _empty_manifest_terminate_build 0
+%undefine _debugsource_packages
 
 %define devname %mklibname %{name} -d
 
 Group:		System/Kernel and hardware
 Summary:	Firmware update EFI binaries
 Name:		fwupd-efi
-Version:	1.4
+Version:	1.7
 Release:	1
 License:	LGPLv2+
 URL:		https://github.com/fwupd/fwupd-efi
-Source0:	http://people.freedesktop.org/~hughsient/releases/%{name}-%{version}.tar.xz
+Source0:	https://github.com/fwupd/fwupd-efi/archive/refs/tags/%{version}.tar.gz
 
 # these are the only architectures supporting UEFI UpdateCapsule
 ExclusiveArch:	%{efi}
@@ -37,6 +37,8 @@ Libraries and includes files for developing programs based on %{name}.
 %autosetup -p1
 
 %build
+# ld.lld: error: -shared and -pie may not be used together
+export CC="%{__cc} -fuse-ld=bfd"
 %meson \
     -Defi-libdir="%{_libdir}" \
     -Defi-ldsdir="%{_libdir}/gnuefi" \
