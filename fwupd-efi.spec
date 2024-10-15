@@ -17,6 +17,8 @@ BuildRequires:	meson
 BuildRequires:	gnu-efi
 BuildRequires:	efi-srpm-macros
 BuildRequires:	gcc
+# For genpeimg
+BuildRequires:	mingw
 BuildRequires:	binutils
 BuildRequires:  python3dist(pefile)
 
